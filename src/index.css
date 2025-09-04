@@ -90,7 +90,7 @@
   }
 
   .navbuddy-panel{
-    @apply origin-bottom-right max-h:[min(70vh,520px)] overflow-auto overscroll-contain;
+    @apply origin-bottom-right max-h-[min(70vh,520px)] overflow-auto overscroll-contain;
     animation: popOpen 160ms cubic-bezier(.2,.8,.2,1) both;
   }
   .navbuddy-panel.closing{ animation: popOpen 160ms cubic-bezier(.2,.8,.2,1) reverse both; }
