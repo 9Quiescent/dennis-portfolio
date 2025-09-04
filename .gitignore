@@ -1,0 +1,22 @@
+# deps
+node_modules/
+.pnp*
+.pnpm-debug.log*
+
+# builds / caches
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+# env & logs
+.env
+.env.*
+!.env.example
+*.log
+
+# editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
