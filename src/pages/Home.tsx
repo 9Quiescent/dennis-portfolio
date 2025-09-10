@@ -1,4 +1,5 @@
 import ProjectCard from "../components/ProjectCard";
+import { projects } from "../data/projects";
 
 export default function Home() {
   return (
@@ -10,16 +11,9 @@ export default function Home() {
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center mb-8">
-          <ProjectCard
-            title="MANET Simulator"
-            description="A Python-based Mobile Ad-hoc Network visualizer and simulation tool."
-            link="https://github.com/9Quiescent/manet-sim"
-          />
-          <ProjectCard
-            title="Proposal Management System"
-            description="Ver 1.0 of a continuously improving, full-stack project management application for a government partner using C#, ASP.NET, Razor Pages, and SQL as a backend. includes a Bash- based automation script for efficient developer onboarding. Deployed using Electron Deployment tools."
-            link="github.com/ICTCapstoneProject/ICT-Capstone"
-          />
+          {projects.map(p => (
+            <ProjectCard key={p.title} {...p} />
+          ))}
         </div>
 
         <a href="mailto:your.email@example.com" className="text-blue-600 hover:underline">
