@@ -1,16 +1,46 @@
-export type ProjectCardProps = { title: string; description: string; link: string };
+import React from "react";
 
-export default function ProjectCard({ title, description, link }: ProjectCardProps) {
-  return (
-    <a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="bg-white rounded-2xl shadow p-4 w-72 text-left hover:shadow-lg transition"
-    >
-      <h2 className="font-bold text-xl mb-1">{title}</h2>
-      <p className="text-gray-500 text-sm mb-2">{description}</p>
-      <span className="text-sm text-blue-500">View Project →</span>
+type ProjectCardProps = {
+  title: string;
+  blurb?: string;          // old name
+  description?: string;    // your current data uses this
+  link?: string;
+  badges?: string[];
+};
+
+export default function ProjectCard({
+  title,
+  blurb,
+  description,
+  link,
+  badges = [],
+}: ProjectCardProps) {
+  const text = blurb ?? description ?? "";
+
+  const CardInner = (
+    <div className="dc-card p-5 hover:-translate-y-px transition will-change-transform">
+      <h3 className="text-lg font-extrabold">{title}</h3>
+      <p className="mt-2 text-sm opacity-90">{text}</p>
+      {!!badges.length && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {badges.map((b) => (
+            <span key={b} className="pill">{b}</span>
+          ))}
+        </div>
+      )}
+      {link && (
+        <div className="mt-4">
+          <span className="dc-btn tone-blue">View Project →</span>
+        </div>
+      )}
+    </div>
+  );
+
+  return link ? (
+    <a href={link} target="_blank" rel="noopener noreferrer" className="block" data-animate>
+      {CardInner}
     </a>
+  ) : (
+    <article data-animate>{CardInner}</article>
   );
 }

@@ -81,6 +81,31 @@
   @media (max-width:640px){ .span-4{ grid-column: span 12 / span 12; } }
 
   .avatar-wrap{ @apply relative overflow-visible rounded-[22px]; }
+
+/* remove baseline gaps so positioning is exact */
+.avatar-wrap > img{ display:block; }
+
+.tape{
+  @apply absolute pointer-events-none opacity-95;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.15));
+  z-index: 10;
+}
+
+/* top-right tape */
+.tape.tr{
+  top: 0; right: 0;
+  width: 58%;
+  transform: translate(28%,-46%) rotate(10deg);
+  transform-origin: center;
+}
+
+/* bottom-left tape */
+.tape.bl{
+  bottom: 0; left: 0;
+  width: 58%;
+  transform: translate(-18%,38%) rotate(-180deg);
+  transform-origin: center;
+}
   .ai-flash{ @apply relative; }
   .ai-flash::after{
     content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
