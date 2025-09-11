@@ -1,19 +1,14 @@
+
 import Hero from "../components/Hero";
 import ProjectCard from "../components/ProjectCard";
 import { projects as defaultProjects } from "../data/projects";
-
-type SimpleProject = {
-  title: string;
-  blurb: string;
-  link?: string;
-  badges?: string[];
-};
+import type { Project } from "../data/projects";
 
 export default function Home({
   projects = defaultProjects,
   contactEmail = "your.email@example.com",
 }: {
-  projects?: SimpleProject[];
+  projects?: Project[];
   contactEmail?: string;
 }) {
   return (
@@ -23,17 +18,14 @@ export default function Home({
 
         <div className="flex flex-wrap gap-4 justify-center mb-8">
           {projects.map((p) => (
-            <ProjectCard
-              key={p.title}
-              title={p.title}
-              blurb={p.blurb}
-              link={p.link}
-              badges={p.badges}
-            />
+            <ProjectCard key={p.title} {...p} />
           ))}
         </div>
 
-        <a href={`mailto:${contactEmail}`} className="text-blue-600 hover:underline">
+        <a
+          href={`mailto:${contactEmail}`}
+          className="text-blue-600 hover:underline"
+        >
           Contact
         </a>
       </div>
