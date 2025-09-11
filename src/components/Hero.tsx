@@ -1,5 +1,5 @@
 import React from "react";
-import stickyTape from "../assets/stickytape.png";
+import stickyTape from "../assets/Stickytape.png";
 import linkedinPng from "../assets/LinkedInlogo.png";
 import headshot from "../assets/Dennis.jpeg";
 const headshotSrc = headshot;
