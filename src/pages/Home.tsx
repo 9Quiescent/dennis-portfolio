@@ -1,34 +1,51 @@
-
+import { useEffect, useState } from "react";
 import Hero from "../components/Hero";
-import ProjectCard from "../components/ProjectCard";
-import { projects as defaultProjects } from "../data/projects";
-import type { Project } from "../data/projects";
+import AboutPanel from "../sections/AboutPanel";
+import ProjectsPanel from "../sections/ProjectsPanel";
+import { projects as PROJECTS } from "../data/projects";
 
-export default function Home({
-  projects = defaultProjects,
-  contactEmail = "your.email@example.com",
-}: {
-  projects?: Project[];
-  contactEmail?: string;
-}) {
+export type TabKey = "about" | "projects";
+
+// Accept optional props (backwards-compat with old App that passed contactEmail)
+export default function Home(_props?: { contactEmail?: string }) {
+  const [tab, setTab] = useState<TabKey>("about");
+
+  useEffect(() => {
+    const nodes = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-animate]")
+    );
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target as HTMLElement;
+          el.style.transitionDelay = (el.dataset.delay as string) || "0ms";
+          el.classList.add("in");
+          io.unobserve(el);
+        });
+      },
+      { threshold: 0.1 }
+    );
+    nodes.forEach((el, i) => {
+      (el as any).dataset.delay = `${i * 70}ms`;
+      io.observe(el);
+    });
+    return () => io.disconnect();
+  }, [tab]);
+
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4">
-      <div className="max-w-2xl w-full text-center py-12">
-        <Hero />
-
-        <div className="flex flex-wrap gap-4 justify-center mb-8">
-          {projects.map((p) => (
-            <ProjectCard key={p.title} {...p} />
-          ))}
+    <main className="min-h-screen text-ink bg-hero-sky">
+      <header className="px-6 pt-8 sm:px-10">
+        <div className="max-w-7xl mx-auto">
+          <Hero active={tab} onGo={setTab} />
         </div>
+      </header>
 
-        <a
-          href={`mailto:${contactEmail}`}
-          className="text-blue-600 hover:underline"
-        >
-          Contact
-        </a>
-      </div>
+      <section className="px-6 sm:px-10 mt-6 pb-16">
+        <div className="max-w-7xl mx-auto grid gap-6">
+          {tab === "about" ? <AboutPanel /> : <ProjectsPanel projects={PROJECTS} />}
+        </div>
+      </section>
     </main>
   );
 }
