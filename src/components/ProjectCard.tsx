@@ -1,5 +1,4 @@
 import React from "react";
-
 export type LinkBtn = { label: string; href?: string };
 export type ProjectCardProps = {
   title: string;
