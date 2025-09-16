@@ -3,6 +3,10 @@ export type Project = {
   blurb: string;
   link?: string;
   badges?: string[];
+  links?: { label: string; href?: string }[];
+  videoSrc?: string;
+  posterSrc?: string;
+  highlight?: boolean;
 };
 
 export const projects: Project[] = [

@@ -18,5 +18,5 @@ const PROJECTS = [
 ];
 
 export default function App() {
-  return <Home projects={PROJECTS} contactEmail={CONTACT_EMAIL} />;
+  return <Home contactEmail="your.email@example.com" />;
 }
