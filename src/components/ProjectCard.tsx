@@ -1,4 +1,4 @@
-import React from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
 export type LinkBtn = { label: string; href?: string };
 export type ProjectCardProps = {
@@ -17,7 +17,7 @@ function DcCard({
   className = "",
   children,
   ...rest
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: HTMLAttributes<HTMLDivElement>) {
   return (
     <div {...rest} className={`dc-card ${className}`} data-animate>
       {children}
@@ -25,7 +25,7 @@ function DcCard({
   );
 }
 
-function Pill({ children }: { children: React.ReactNode }) {
+function Pill({ children }: { children: ReactNode }) {
   return <span className="pill">{children}</span>;
 }
 
@@ -35,7 +35,7 @@ function DcLink({
   tone = "blue",
 }: {
   href?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   tone?: "blue" | "pink" | "green" | "orange";
 }) {
   return href ? (
@@ -61,7 +61,9 @@ export default function ProjectCard({
   return (
     <article data-animate style={{ transitionDelay: animateDelay }}>
       <DcCard className="relative p-5">
-        <h3 className="text-lg font-extrabold">{title}</h3>
+        <h3 className="text-lg font-extrabold" data-project-title>
+          {title}
+        </h3>
         <p className="mt-2 text-sm opacity-90">{blurb}</p>
 
         {videoSrc && (
@@ -96,11 +98,7 @@ export default function ProjectCard({
                 l.label.toLowerCase().includes("writeup");
               if (isWriteup && onOpenWriteup) {
                 return (
-                  <button
-                    key={i}
-                    className="dc-btn tone-blue"
-                    onClick={() => onOpenWriteup()}
-                  >
+                  <button key={i} className="dc-btn tone-blue" onClick={() => onOpenWriteup()}>
                     {l.label}
                   </button>
                 );

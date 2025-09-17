@@ -8,14 +8,28 @@ export type Project = {
   badges: string[];
   links?: { label: string; href?: string }[];
   highlight?: boolean;
-  videoSrc?: string;
-  posterSrc?: string;
+  videoSrc?: string;   // can be a public URL path
+  posterSrc?: string;  // optional poster image
 };
 
-export type AIItem = { id: string; title: string; text: string; kind: "about" | "skill" | "project" | "tooling" };
+export type AIItem = {
+  id: string;
+  title: string;
+  text: string;
+  kind: "about" | "skill" | "project" | "tooling";
+};
 
-/* ---------- Static content  ---------- */
-export const LINKEDIN_URL = "https://www.linkedin.com/in/dennis-kalongonda-083651193/";
+/* ---------- Routes & anchors used across the app ---------- */
+export const ABOUT_ANCHORS = {
+  summary: "about-summary",
+  education: "about-education",
+  tooling: "about-tooling",
+  experience: "about-experience",
+} as const;
+
+/* ---------- Static content ---------- */
+export const LINKEDIN_URL =
+  "https://www.linkedin.com/in/dennis-kalongonda-083651193/";
 
 export const ABOUT_SUMMARY =
   "I ship calm reliability. Small, reversible changes. Tests that matter. Runbooks that save weekends. Platform work, clean frontends, and careful rollouts. If it breaks, fix it and write the play so it doesn’t repeat.";
@@ -71,9 +85,14 @@ export const EXPERIENCE_POINTS: string[] = [
   "Collaboration & impact: partnered with research and IT to turn ambiguous requirements into shippable increments; delivered a maintainable codebase for final handoff.",
 ];
 
-/* ---------- Projects (with media) ---------- */
-import atbxDemoMp4 from "../assets/attack-the-box-demo.mp4";
-import mvcDemoMp4 from "../assets/secure-research-demo.mp4";
+/* ---------- Projects (with media) ----------
+   NOTE: to avoid build-time path errors, reference videos from /public.
+   Place your files at:
+     public/media/attack-the-box-demo.mp4
+     public/media/secure-research-demo.mp4
+*/
+const ATBX_DEMO_URL = "/media/attack-the-box-demo.mp4";
+const MVC_DEMO_URL  = "/media/secure-research-demo.mp4";
 
 export const PROJECTS: Project[] = [
   {
@@ -99,7 +118,7 @@ export const PROJECTS: Project[] = [
       "Reverse TCP",
       "Evidence & Reporting",
     ],
-    videoSrc: atbxDemoMp4,
+    videoSrc: ATBX_DEMO_URL,
     highlight: true,
     links: [{ label: "Read Write-up", href: "#" }],
   },
@@ -130,7 +149,7 @@ export const PROJECTS: Project[] = [
       "Confluence",
       "GitHub Actions / Azure DevOps",
     ],
-    videoSrc: mvcDemoMp4,
+    videoSrc: MVC_DEMO_URL,
   },
   {
     title: "MANET Visualiser",
@@ -172,4 +191,40 @@ export const PROJECTS: Project[] = [
     badges: ["C++", "Memory Management", "Design Patterns", "RAII", "Smart Pointers", "Profiling", "Game Logic"],
     links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/Kaldt001_COMP_3023_A2" }],
   },
+];
+
+/* ---------- AI Items (lightweight context for NavBuddy) ---------- */
+const TOOLING_FLAT = TOOLING.map(g => `${g.title}: ${g.items.join(", ")}`).join(" | ");
+
+export const AI_ITEMS: AIItem[] = [
+  {
+    id: ABOUT_ANCHORS.summary,
+    title: "About me summary",
+    text: ABOUT_SUMMARY,
+    kind: "about",
+  },
+  {
+    id: ABOUT_ANCHORS.education,
+    title: "Education — Bachelor of IT (Software Development), UniSA",
+    text: "Bachelor of Information Technology (Software Development) — University of South Australia (UniSA).",
+    kind: "about",
+  },
+  {
+    id: ABOUT_ANCHORS.tooling,
+    title: "Tooling & Technologies",
+    text: TOOLING_FLAT,
+    kind: "tooling",
+  },
+  {
+    id: ABOUT_ANCHORS.experience,
+    title: "Recent experience highlights",
+    text: EXPERIENCE_POINTS.join(" "),
+    kind: "about",
+  },
+  ...PROJECTS.map<AIItem>((p, i) => ({
+    id: `project-${i}`,
+    title: p.title,
+    text: `${p.blurb} ${p.badges.join(", ")}`,
+    kind: "project",
+  })),
 ];
