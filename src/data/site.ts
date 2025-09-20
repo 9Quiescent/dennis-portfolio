@@ -104,7 +104,6 @@ export const EXPERIENCE_POINTS: string[] = [
   "Operational excellence: SLIs/SLOs, dashboards, and on-call-friendly docs; install/upgrade guides and onboarding scripts (Bash/PowerShell) for smooth handoffs.",
   "Collaboration & impact: partnered with research and IT to turn ambiguous requirements into shippable increments; delivered a maintainable codebase for final handoff.",
 ];
-
 /* ---------- Projects (with media) ----------*/
 const ATBX_DEMO_URL = "../assets/attack-the-box-demo.mp4";
 const MVC_DEMO_URL  = "../assets/secure-research-demo.mp4";

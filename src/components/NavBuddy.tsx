@@ -97,6 +97,7 @@ function buildFactsBlob() {
   ].join("\n");
 }
 
+
 export default function NavBuddy({ onGo, variant = "inline", linkedinUrl }: Props) {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -105,11 +106,9 @@ export default function NavBuddy({ onGo, variant = "inline", linkedinUrl }: Prop
   const [say, setSay] = useState<string>("");
   const [chips, setChips] = useState<string[]>([]);
   const [err, setErr] = useState<string>("");
-
   const panelRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const replyEpoch = useRef(0);
-
   useEffect(() => {
     if (!open) return;
     const onDown = (e: MouseEvent) => {
@@ -243,6 +242,7 @@ export default function NavBuddy({ onGo, variant = "inline", linkedinUrl }: Prop
           className="dc-btn tone-blue icon-btn"
           aria-label="Open Nav Buddy"
           aria-expanded={open}
+
           onClick={() => { if (open) closePanel(); else { setOpen(true); setTimeout(() => inputRef.current?.focus(), 0); } }}
           title="Nav Buddy"
         >
@@ -251,7 +251,6 @@ export default function NavBuddy({ onGo, variant = "inline", linkedinUrl }: Prop
       </div>
     );
   }
-
   return (
     <div className="fixed bottom-5 right-5 z-50">
       {open && (
