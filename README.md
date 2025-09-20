@@ -1,4 +1,4 @@
-# Dennis Portfolio
+# My Portfolio
 
 Hey, I'm Dennis and you're in the repository for my portfolio site. 
 The purpose of this portfolio is to make it ridiculously easy to find what you need (projects, skills, education) without wrestling the UI, and also show how I think about product trade‑offs, particularly where LLMs are useful, and where we should keep things boring (a.k.a. reliable).
