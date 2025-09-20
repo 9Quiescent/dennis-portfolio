@@ -1,0 +1,169 @@
+# Page snapshot
+
+```yaml
+- main [ref=e3]:
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - generic [ref=e11]:
+        - img "Dennis Kalongonda" [ref=e12]
+        - img
+        - img
+      - generic [ref=e13]:
+        - heading "Dennis Kalongonda" [level=1] [ref=e14]
+        - generic [ref=e15]: Software Engineer · AI/ML · DevSecOps · Cloud · FullStack (.NET) · Security · Support
+    - generic [ref=e16]:
+      - button "About" [ref=e17]:
+        - generic [ref=e18]: About
+      - button "Projects" [ref=e19]:
+        - generic [ref=e20]: Projects
+      - generic [ref=e21]:
+        - generic [ref=e23]:
+          - generic [ref=e25]:
+            - generic [ref=e26]: The Trusty Bubbleman
+            - generic [ref=e27]: Type what you want; I’ll jump there.
+          - generic [ref=e28]:
+            - textbox "Ask or command… e.g. 'show education', 'projects', 'linkedin'" [active] [ref=e29]: show me your c++ work
+            - button "Send" [ref=e30]
+          - generic [ref=e32]: Please look through the projects page for code.
+        - button "Open Nav Buddy" [expanded] [ref=e33]
+      - link "Open LinkedIn profile" [ref=e34] [cursor=pointer]:
+        - /url: https://www.linkedin.com/in/dennis-kalongonda-083651193/
+  - generic [ref=e37]:
+    - generic [ref=e39]:
+      - heading "Some Stuff I've Built..." [level=2] [ref=e40]
+      - paragraph [ref=e41]: (And a video demo or two in glorious Zoom screen capture quality!)
+    - article [ref=e43]:
+      - generic [ref=e44]:
+        - heading "Dennis' Portfolio" [level=3] [ref=e45]
+        - paragraph [ref=e46]: The site you’re using. Vite + React + TypeScript with Tailwind, teeny bit of JavaScript. Navigation assistant (Large Language Model for user feedback, UI for nav) for local Q&A and section navigation, plus Playwright E2E and Vitest component tests. Deployed with a Github Actions and CloudFlare CI/CD.
+        - generic [ref=e47]:
+          - generic [ref=e48]: Vite
+          - generic [ref=e49]: React
+          - generic [ref=e50]: TypeScript
+          - generic [ref=e51]: JavaScript
+          - generic [ref=e52]: Tailwind CSS
+          - generic [ref=e53]: Playwright
+          - generic [ref=e54]: Vitest
+          - generic [ref=e55]: GitHub Actions
+          - generic [ref=e56]: Cloudflare Pages/Workers
+          - generic [ref=e57]: Cloud
+          - generic [ref=e58]: Accessibility
+          - generic [ref=e59]: LLM/Large Language Model
+          - generic [ref=e60]: AI/Artifical Intelligence
+          - generic [ref=e61]: ML/Machine Learning
+          - generic [ref=e62]: NLP
+          - generic [ref=e63]: Transformers
+          - generic [ref=e64]: AI/ML
+        - link "View Public Repo" [ref=e66] [cursor=pointer]:
+          - /url: https://github.com/9Quiescent/dennis-portfolio
+    - article [ref=e68]:
+      - generic [ref=e69]:
+        - heading "Attack the Box Demonstration" [level=3] [ref=e70]
+        - paragraph [ref=e71]: "Security training lab: recon, enumeration, validating a legacy vuln in a sandbox, gathering evidence, and producing a live demonstration for all technical proficiencies. Emphasis on safety, explainability, and defense practices. A super smooth live commentary for this video demo, and the most unfortunate zoom compression."
+        - generic [ref=e74]:
+          - generic [ref=e75]: TCP/IP
+          - generic [ref=e76]: OSI Model
+          - generic [ref=e77]: Subnetting (/24)
+          - generic [ref=e78]: ICMP
+          - generic [ref=e79]: ARP
+          - generic [ref=e80]: PCAP
+          - generic [ref=e81]: Wireshark Filters
+          - generic [ref=e82]: Linux CLI
+          - generic [ref=e83]: Bash
+          - generic [ref=e84]: Kali Linux
+          - generic [ref=e85]: Nmap
+          - generic [ref=e86]: Metasploitable 2
+          - generic [ref=e87]: FTP
+          - generic [ref=e88]: msfvenom
+          - generic [ref=e89]: Reverse TCP
+          - generic [ref=e90]: Evidence & Reporting
+    - article [ref=e92]:
+      - generic [ref=e93]:
+        - heading "R&D Proposal Management System" [level=3] [ref=e94]
+        - paragraph [ref=e95]: An internal research and development proposal manager built for a government partner. ASP.NET Core MVC with SQL and a Javascript + CSS BS5 UI. I owned schema design, REST APIs, Azure Cloud CI/CD, release notes, install/upgrade docs, and rollback. MySQL was the team's RDBMS of choice. Enjoy the video demo!
+        - generic [ref=e98]:
+          - generic [ref=e99]: C#
+          - generic [ref=e100]: ASP.NET Core MVC
+          - generic [ref=e101]: Razor
+          - generic [ref=e102]: Entity Framework
+          - generic [ref=e103]: Web API
+          - generic [ref=e104]: REST
+          - generic [ref=e105]: SQL
+          - generic [ref=e106]: MySQL
+          - generic [ref=e107]: AuthN/AuthZ
+          - generic [ref=e108]: OWASP ASVS
+          - generic [ref=e109]: CI/CD
+          - generic [ref=e110]: xUnit
+          - generic [ref=e111]: Terraform
+          - generic [ref=e112]: Cloud
+          - generic [ref=e113]: PowerShell/Bash
+          - generic [ref=e114]: Jira
+          - generic [ref=e115]: Confluence
+          - generic [ref=e116]: Agile
+          - generic [ref=e117]: Scrum
+          - generic [ref=e118]: GitHub Actions / Azure DevOps
+    - article [ref=e120]:
+      - generic [ref=e121]:
+        - heading "MANET Visualiser" [level=3] [ref=e122]
+        - paragraph [ref=e123]: Educational visualiser/simulator for mobile ad hoc network rules and behaviour. Tkinter GUI with clean OOP and Dockerised dev for reproducible runs.
+        - generic [ref=e124]:
+          - generic [ref=e125]: Python3
+          - generic [ref=e126]: OOP
+          - generic [ref=e127]: Tkinter
+          - generic [ref=e128]: Simulation
+          - generic [ref=e129]: Instrumentation
+          - generic [ref=e130]: Docker
+        - link "View Public Repo" [ref=e132] [cursor=pointer]:
+          - /url: https://github.com/9Quiescent/manet-sim
+    - article [ref=e134]:
+      - generic [ref=e135]:
+        - heading "NASA Software Release Data Warehouse" [level=3] [ref=e136]
+        - paragraph [ref=e137]: "XML → relational pipeline around NASA software releases: generate XML via Python, discover schema with Trang, validate, extract normalised CSVs with XQuery/BaseX, then load into Oracle XE for analytics."
+        - generic [ref=e138]:
+          - generic [ref=e139]: Python3
+          - generic [ref=e140]: JSON→XML
+          - generic [ref=e141]: XML
+          - generic [ref=e142]: XQuery 3.1
+          - generic [ref=e143]: BaseX 10
+          - generic [ref=e144]: Schema Discovery (Trang)
+          - generic [ref=e145]: xmllint
+          - generic [ref=e146]: CSV Normalization
+          - generic [ref=e147]: Oracle XE (Docker)
+          - generic [ref=e148]: SQL (Oracle)
+          - generic [ref=e149]: Data Modeling
+          - generic [ref=e150]: PK/FK Constraints
+          - generic [ref=e151]: Joins & Aggregations
+          - generic [ref=e152]: Indexing
+          - generic [ref=e153]: ETL Orchestration
+          - generic [ref=e154]: Reproducible Runs
+        - link "View Public Repo" [ref=e156] [cursor=pointer]:
+          - /url: https://github.com/9Quiescent/json-xml-relational-pipeline
+    - article [ref=e158]:
+      - generic [ref=e159]:
+        - heading "Deadman’s Draw in C++" [level=3] [ref=e160]
+        - paragraph [ref=e161]: C++ implementation of DMD with RAII/smart pointers and deterministic destruction. Focus on ownership, memory management profiling, and clean design; an academic sample assessed with automated unit tests (HD).
+        - generic [ref=e162]:
+          - generic [ref=e163]: C++
+          - generic [ref=e164]: Memory Management
+          - generic [ref=e165]: Design Patterns
+          - generic [ref=e166]: RAII
+          - generic [ref=e167]: Smart Pointers
+          - generic [ref=e168]: Profiling
+          - generic [ref=e169]: Game Logic
+        - link "View Public Repo" [ref=e171] [cursor=pointer]:
+          - /url: https://github.com/9Quiescent/Kaldt001_COMP_3023_A2
+    - article [ref=e173]:
+      - generic [ref=e174]:
+        - heading "Java Farm Simulator" [level=3] [ref=e175]
+        - paragraph [ref=e176]: Small simulation of fields, crops, and livestock with tick-based progression. Focus on domain modelling, collections, and clear object lifecycles.
+        - generic [ref=e177]:
+          - generic [ref=e178]: Java
+          - generic [ref=e179]: OOP
+          - generic [ref=e180]: Collections
+          - generic [ref=e181]: Simulation Loop
+          - generic [ref=e182]: JUnit
+          - generic [ref=e183]: Maven/Gradle
+          - generic [ref=e184]: CLI
+        - link "View Public Repo" [ref=e186] [cursor=pointer]:
+          - /url: "#"
+```

@@ -9,7 +9,7 @@ export type ProjectCardProps = {
   videoSrc?: string;
   posterSrc?: string;
   highlight?: boolean;
-  animateDelay?: string; // for staggered fade like the old app
+  animateDelay?: string;
   onOpenWriteup?: () => void;
 };
 

@@ -1,3 +1,5 @@
+import proposalDemo from "../assets/secure-research-demo.mp4";
+import atbxDemo from "../assets/attack-the-box.mp4";
 /* ---------- Types shared site-wide ---------- */
 export type TabKey = "about" | "projects";
 export type Tone = "orange" | "green" | "blue" | "pink";
@@ -9,7 +11,7 @@ export type Project = {
   links?: { label: string; href?: string }[];
   highlight?: boolean;
   videoSrc?: string;   // can be a public URL path
-  posterSrc?: string;  // optional poster image
+  posterSrc?: string;  // optional poster image if i feel like it
 };
 
 export type AIItem = {
@@ -31,16 +33,34 @@ export const ABOUT_ANCHORS = {
 export const LINKEDIN_URL =
   "https://www.linkedin.com/in/dennis-kalongonda-083651193/";
 
+export type Education = {
+  degree: string;
+  school: string;
+  url?: string;
+  years?: string;
+};
+
+export const EDU_JOINER = " at ";
+
+export const EDUCATION: Education[] = [
+  {
+    degree: "Bachelor of Information Technology (Software Development)",
+    school: "University of South Australia (UniSA)",
+    url: "https://www.unisa.edu.au/",
+    years: "2023–2025",
+  },
+];
+
 export const ABOUT_SUMMARY =
-  "I ship calm reliability. Small, reversible changes. Tests that matter. Runbooks that save weekends. Platform work, clean frontends, and careful rollouts. If it breaks, fix it and write the play so it doesn’t repeat.";
+  "I love being a developer, and I love playing on video games. Some of my favourites include Scribblenauts on the Nintendo DS, Ocarina of Time on the Nintendo 64, Ratchet & Clank 1 for the Playstation 2, Sonic Unleashed for the Playstation 3 and just about every single Halo game over on Xbox systems. Some Metroid on the GameCube/Wii is usually a fantastic time as well. I absolutely adore free days outdoors by Henley (or most beaches for that matter), and aspire to become a Corgi or Shiba Inu dad in the hopefully near future. One of these days, I'll also be good at playing the guitar, so keep your ears open for that! :) As for the here and now, I've built this portfolio for you guys (recruitment staff I assume to be able find anything you'd possibly need to know about me as a prospective employee. For starters, if you ever get lost in all of this blue, you're always welcome to tap on the trusty bubble man in the blue box. He's been designed to be pretty useful for navigation, or answering questions if you would prefer to interact with my portfolio in that sort of fashion. If that's not your thing, and you'd prefer something more deterministic, this site is also designed to be interacted with manually. You'll be able to find Github repository links by pressing the green 'Projects' button for in the navigation bar in the section above for example. You are currently on the 'About' page, and are hopefully absorbing everything you've read thus far. But that's enough of me, I'll leave you to your duties now :D";
 
 export const TOOLING: Array<{ title: string; items: string[] }> = [
   { title: "Languages", items: ["C#", "Python", "Java", "TypeScript/JavaScript", "SQL", "C++", "Bash", "PowerShell"] },
   { title: "Frameworks", items: ["ASP.NET Core MVC", "Razor", "Entity Framework", "Web API (REST)", "React", "xUnit", "Tailwind CSS", "Vite"] },
   { title: "Cloud, Orchestration & Infra", items: ["AWS", "Azure", "Docker", "Kubernetes (AKS)", "Terraform", "Linux"] },
   { title: "Virtualisation & Lab", items: ["VMware Workstation/ESXi", "VirtualBox", "UTM (Apple Silicon)", "WSL2", "Docker Desktop", "Ubuntu"] },
-  { title: "DevOps", items: ["GitHub Actions", "Azure DevOps Pipelines", "CI/CD", "Release Notes", "Runbooks", "Rollback Plans", "SemVer", "Docker Compose", "Cloudflare Pages/Workers"] },
-  { title: "Networking & Security", items: ["OWASP ASVS", "OWASP Top 10", "AuthN/AuthZ", "Nmap", "Wireshark/PCAP", "Burp Suite (lab)", "Metasploit (lab)", "Threat-modeling"] },
+  { title: "DevOps", items: ["GitHub Actions", "Azure DevOps Pipelines", "CI/CD", "Release Notes", "Rollback Plans", "SemVer", "Docker Compose", "Cloudflare Pages/Workers"] },
+  { title: "Networking & Security", items: ["OWASP ASVS", "OWASP Top 10", "AuthN/AuthZ", "Nmap", "Wireshark/PCAP", "Metasploit (lab)", "Threat-modeling"] },
   { title: "Data", items: ["ETL", "XQuery/BaseX", "XML/JSON", "Oracle XE", "Data Modeling", "Joins/Indexes"] },
   { title: "Observability & QA", items: ["Health checks", "SLIs/SLOs", "Structured logging", "Integration tests"] },
   { title: "Project & Docs", items: ["Jira", "Confluence", "ADRs", "Markdown"] },
@@ -71,125 +91,102 @@ export const FUN_LINKS: Array<{ title: string; href: string; blurb: string }> = 
   { title: "Data Looks Better Naked (Darkhorse Analytics)", href: "https://www.darkhorseanalytics.com/blog/data-looks-better-naked", blurb: "Remove-to-improve basics for readable charts." },
   { title: "Write Code That’s Easy to Delete", href: "https://www.youtube.com/watch?v=8bZh5LMaSmE", blurb: "Great 10-minute principle: deletion-friendly code ages best." },
   { title: "The Law of Leaky Abstractions (Joel Spolsky)", href: "https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/", blurb: "Abstractions leak, so design ops and UX accordingly." },
-  { title: "Missing Semester of CS", href: "https://missing.cs.mit.edu/", blurb: "Shell, git, editors, real-world glue every dev needs." },
+  { title: "Friends Don't Let Friends Make Bad Graphs", href: "https://github.com/cxli233/FriendsDontLetFriends", blurb: "Why certain types of data visualisations are bad." },
 ];
 
 export const EXPERIENCE_POINTS: string[] = [
   "Lead Developer, Scrum Master, and Product Owner for a government partner (FSSA) R&D proposal management system. Shipped MVP to production and iterated in sprints.",
   "Owned architecture end-to-end: normalized SQL schema & migrations, C# REST APIs (ASP.NET Core Web API), Razor/Bootstrap UI, and Azure infrastructure provisioned with Terraform.",
   "Process & delivery: ran sprint ceremonies, backlog grooming, and release planning; wrote epics/user stories/acceptance criteria; managed change control, release notes, and stakeholder demos in Jira/Confluence.",
-  "Quality & reliability: CI/CD via GitHub Actions/Azure DevOps with xUnit integration tests, schema checks, and static-analysis gates; one-click deploys with documented rollback plans and runbooks.",
+  "Quality & reliability: CI/CD via GitHub Actions/Azure DevOps with xUnit integration tests, schema checks, and static-analysis gates; one line deploys with documented rollback plans.",
   "Security by default: AuthN/AuthZ with role-based access, input validation, and OWASP ASVS-aligned practices; least-privilege identities and secrets management.",
   "Performance & DX: tuned EF Core queries and indexes, server-side pagination, and caching on read paths; structured logging and health checks kept the app responsive under realistic data volumes.",
   "Operational excellence: SLIs/SLOs, dashboards, and on-call-friendly docs; install/upgrade guides and onboarding scripts (Bash/PowerShell) for smooth handoffs.",
   "Collaboration & impact: partnered with research and IT to turn ambiguous requirements into shippable increments; delivered a maintainable codebase for final handoff.",
 ];
 
-/* ---------- Projects (with media) ----------
-   NOTE: to avoid build-time path errors, reference videos from /public.
-   Place your files at:
-     public/media/attack-the-box-demo.mp4
-     public/media/secure-research-demo.mp4
-*/
-const ATBX_DEMO_URL = "/media/attack-the-box-demo.mp4";
-const MVC_DEMO_URL  = "/media/secure-research-demo.mp4";
+/* ---------- Projects (with media) ----------*/
+const ATBX_DEMO_URL = "../assets/attack-the-box-demo.mp4";
+const MVC_DEMO_URL  = "../assets/secure-research-demo.mp4";
 
 export const PROJECTS: Project[] = [
+  // 1) Portfolio FIRST
+  {
+    title: "Dennis' Portfolio",
+    blurb:
+      "The site you’re using. Vite + React + TypeScript with Tailwind, teeny bit of JavaScript. Navigation assistant (Large Language Model for user feedback, UI for nav) for local Q&A and section navigation, plus Playwright E2E and Vitest component tests. Deployed with a Github Actions and CloudFlare CI/CD.",
+    badges: [
+      "Vite","React","TypeScript", "JavaScript","Tailwind CSS","Playwright","Vitest",
+      "GitHub Actions","Cloudflare Pages/Workers", "Cloud","Accessibility", "LLM/Large Language Model", "AI/Artifical Intelligence", "ML/Machine Learning", "NLP", "Transformers", "AI/ML"
+    ],
+    links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/dennis-portfolio" }],
+  },
+
+  // 2) Attack the Box (video)
   {
     title: "Attack the Box Demonstration",
     blurb:
-      "A self-contained security-focused training lab: from recon, to enumeration, to validating a legacy vulnerability in a sandbox, gathering evidence, and producing a mini-report. Emphasis on safety, explainability, and best defense practices.",
+      "Security training lab: recon, enumeration, validating a legacy vuln in a sandbox, gathering evidence, and producing a live demonstration for all technical proficiencies. Emphasis on safety, explainability, and defense practices. A super smooth live commentary for this video demo, and the most unfortunate zoom compression.",
     badges: [
-      "TCP/IP",
-      "OSI Model",
-      "Subnetting (/24)",
-      "ICMP",
-      "ARP",
-      "Packet Capture",
-      "PCAP Analysis",
-      "Wireshark Filters",
-      "Linux CLI",
-      "Bash",
-      "Kali Linux",
-      "Nmap",
-      "Metasploitable 2",
-      "FTP",
-      "Payload Crafting (msfvenom)",
-      "Reverse TCP",
-      "Evidence & Reporting",
+      "TCP/IP","OSI Model","Subnetting (/24)","ICMP","ARP","PCAP","Wireshark Filters",
+      "Linux CLI","Bash","Kali Linux","Nmap","Metasploitable 2","FTP",
+      "msfvenom","Reverse TCP","Evidence & Reporting"
     ],
-    videoSrc: ATBX_DEMO_URL,
+    videoSrc: atbxDemo,
     highlight: true,
-    links: [{ label: "Read Write-up", href: "#" }],
   },
+
+  // 3) Proposal management system (video)
   {
-    title: "Internal R&D Proposal Management System (.NET) · Video Demo Available",
+    title: "R&D Proposal Management System",
     blurb:
-      "A research and development management system I designed, built and shipped for a government partner. ASP.NET Core MVC + C# backend with SQL, Bootstrap/JS front-end. Beyond features, I owned CI/CD, release notes, schema design, install/upgrade docs, onboarding scripts (Bash/PowerShell), and rollback/runbooks. This is more of an internal tool, but I have been permitted to showcase a demo of the platform in the video below.",
+      "An internal research and development proposal manager built for a government partner. ASP.NET Core MVC with SQL and a Javascript + CSS BS5 UI. I owned schema design, REST APIs, Azure Cloud CI/CD, release notes, install/upgrade docs, and rollback. Microsoft SQL Server was the team's RDBMS of choice. Delivered through the Agile/Scrum methodology over 6 sprints.Enjoy the video demo!",
     badges: [
-      "C#",
-      "Javascript",
-      "xUnit Integration Testing",
-      "Terraform",
-      "LINQ",
-      "ASP.NET Core MVC",
-      "Razor",
-      "Entity Framework",
-      "Web API",
-      "RESTful API",
-      "SQL",
-      "AuthN/AuthZ",
-      "OWASP ASVS",
-      "CI/CD",
-      "Release Notes",
-      "Runbooks",
-      "Rollback",
-      "Powershell/Bash Scripting",
-      "Jira",
-      "Confluence",
-      "GitHub Actions / Azure DevOps",
+      "C#","ASP.NET Core MVC","Razor","Entity Framework","Web API","REST", "SQL", "Microsoft SQL Server",
+      "AuthN/AuthZ","OWASP ASVS","CI/CD","xUnit","Terraform","Cloud",
+      "PowerShell/Bash","Jira","Confluence", "Agile", "Scrum", "GitHub Actions / Azure DevOps"
     ],
-    videoSrc: MVC_DEMO_URL,
+    videoSrc: proposalDemo,
   },
+
+  // 4) MANET Visualiser
   {
     title: "MANET Visualiser",
     blurb:
-      "An open-source, educational visualiser/simulator for mobile ad hoc network rules and behaviour. Tkinter GUI + clean OOP, with Dockerised dev for reproducible runs. SOLID/DRY and architecture tradeoffs.",
-    badges: ["Python", "OOP", "Tkinter", "Simulation", "Instrumentation", "Docker"],
+      "Educational visualiser/simulator for mobile ad hoc network rules and behaviour. Tkinter GUI with clean OOP and Dockerised dev for reproducible runs.",
+    badges: ["Python3","OOP","Tkinter","Simulation","Instrumentation","Docker"],
     links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/manet-sim" }],
   },
+
+  // 5) NASA DW
   {
     title: "NASA Software Release Data Warehouse",
     blurb:
-      "End-to-end XML to relational transformation pipeline around unstructured NASA software releases: generate XML via Python, discover schema with Trang, validate, extract normalised CSVs with XQuery/BaseX, then load into Oracle XE (Docker) with PK/FK constraints and run analytics.",
+      "XML → relational pipeline around NASA software releases: generate XML via Python, discover schema with Trang, validate, extract normalised CSVs with XQuery/BaseX, then load into Oracle XE for analytics.",
     badges: [
-      "Python 3",
-      "JSON→XML",
-      "XML",
-      "XQuery 3.1",
-      "BaseX 10",
-      "Schema Discovery (Trang)",
-      "xmllint Validation",
-      "CSV Normalization",
-      "Oracle XE (Docker)",
-      "SQL (Oracle)",
-      "Data Modeling",
-      "PK/FK Constraints",
-      "Joins & Aggregations",
-      "Indexing",
-      "ETL Orchestration",
-      "Reproducible Runs",
-      "DBeaver",
-      "Containerised Environments",
+      "Python3","JSON→XML","XML","XQuery 3.1","BaseX 10","Schema Discovery (Trang)",
+      "xmllint","CSV Normalization","Oracle XE (Docker)","SQL (Oracle)","Data Modeling",
+      "PK/FK Constraints","Joins & Aggregations","Indexing","ETL Orchestration","Reproducible Runs"
     ],
     links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/json-xml-relational-pipeline" }],
   },
+
+  // 6) Deadman’s Draw (C++)
   {
-    title: "Deadman's Draw in C++ · memory management focus [Academic Sample]",
+    title: "Deadman’s Draw in C++",
     blurb:
-      "C++ implementation of DMD with RAII/smart pointers and deterministic destruction. Focus on ownership, profiling and clean design; assessed with automated unit tests (HD).",
-    badges: ["C++", "Memory Management", "Design Patterns", "RAII", "Smart Pointers", "Profiling", "Game Logic"],
-    links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/Kaldt001_COMP_3023_A2" }],
+      "C++ implementation of DMD with RAII/smart pointers and deterministic destruction. Focus on ownership, memory management profiling, and clean design; an academic sample assessed with automated unit tests (HD).",
+    badges: ["C++","Memory Management","Design Patterns","RAII","Smart Pointers","Profiling","Game Logic", "TDD/Test Driven Development"],
+    links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/Kaldt001_COMP_3023_A1" }],
+  },
+
+  // 7) Java Farm Simulator (toy)
+  {
+    title: "Java Farm Simulator",
+    blurb:
+      "Small simulation of fields, crops, and livestock with tick-based progression. Focus on domain modelling, collections, and clear object lifecycles. Assessed using automated unit tests, awarded an HD.",
+    badges: ["Java","OOP","Collections","Simulation Loop","JUnit","Maven/Gradle","CLI", "TDD/Test Driven Development"],
+    links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/A1.3-git-fix" }],
   },
 ];
 
@@ -205,8 +202,8 @@ export const AI_ITEMS: AIItem[] = [
   },
   {
     id: ABOUT_ANCHORS.education,
-    title: "Education — Bachelor of IT (Software Development), UniSA",
-    text: "Bachelor of Information Technology (Software Development) — University of South Australia (UniSA).",
+    title: "Education @ Bachelor of IT (Software Development), UniSA",
+    text: "Bachelor of Information Technology (Software Development) @ University of South Australia (UniSA).",
     kind: "about",
   },
   {

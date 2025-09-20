@@ -86,7 +86,7 @@ export default function Hero({
             Dennis Kalongonda
             </h1>
             <div data-nav="tagline" className="text-sm opacity-80">
-            Software Engineer · AI/ML · DevSecOps · Cloud · SRE · FullStack (.NET) · Security · Support
+            Software Engineer · AI/ML · DevSecOps · Cloud · FullStack (.NET) · Security · Support
             </div>
             </div>
           </div>

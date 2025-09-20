@@ -1,19 +1,16 @@
-// src/sections/AboutPanel.tsx
 import unisaLogo from "../assets/unisa_logo.png";
-import { ABOUT_SUMMARY, TOOLING, EXPERIENCE_POINTS } from "../data/site";
+import { ABOUT_SUMMARY, TOOLING, EXPERIENCE_POINTS, EDUCATION, EDU_JOINER, FUN_LINKS} from "../data/site";
+
 
 export const ABOUT_ANCHORS = {
   summary: "about-summary",
   education: "about-education",
   tooling: "about-tooling",
   experience: "about-experience",
+  links: "about-links",
 } as const;
 
-function DcCard({
-  className = "",
-  children,
-  ...rest
-}: React.HTMLAttributes<HTMLDivElement>) {
+function DcCard({ className = "", children, ...rest }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div {...rest} className={`dc-card ${className}`} data-animate>
       {children}
@@ -21,13 +18,7 @@ function DcCard({
   );
 }
 
-function ToolGroup({
-  title,
-  items,
-}: {
-  title: string;
-  items: string[];
-}) {
+function ToolGroup({ title, items }: { title: string; items: string[] }) {
   return (
     <li className="mb-1 break-inside-avoid">
       <span className="font-semibold">{title}:</span>{" "}
@@ -42,7 +33,7 @@ export default function AboutPanel() {
       {/* A bit about me */}
       <div className="span-12" id={ABOUT_ANCHORS.summary} style={{ scrollMarginTop: "120px" }}>
         <DcCard className="p-5">
-          <h2 className="text-2xl font-extrabold">A bit about me</h2>
+          <h2 className="text-2xl font-extrabold">A bit about me (& This Portfolio)</h2>
           <p className="mt-2 opacity-90">{ABOUT_SUMMARY}</p>
         </DcCard>
       </div>
@@ -50,19 +41,22 @@ export default function AboutPanel() {
       {/* Education */}
       <div className="span-12" id={ABOUT_ANCHORS.education} style={{ scrollMarginTop: "120px" }}>
         <DcCard className="p-5 flex flex-col sm:flex-row sm:items-center gap-4">
-          <img
-            src={unisaLogo}
-            alt="University of South Australia"
-            className="h-10 w-auto object-contain"
-            loading="lazy"
-            decoding="async"
-          />
+          <img src={unisaLogo} alt="University of South Australia" className="h-10 w-auto object-contain" loading="lazy" decoding="async" />
           <div>
             <h3 className="font-extrabold">Education</h3>
-            <p className="opacity-90 text-sm mt-1">
-              <b>Bachelor of Information Technology (Software Development)</b> —{" "}
-              University of South Australia (UniSA).
-            </p>
+            {EDUCATION.map((e) => (
+              <p key={e.degree} className="opacity-90 text-sm mt-1">
+                <b>{e.degree}</b>
+                <span className="opacity-80"> {" "}{EDU_JOINER}
+                  {e.url ? (
+                    <a href={e.url} target="_blank" rel="noopener noreferrer" className="underline decoration-dotted underline-offset-2">
+                      {e.school}
+                    </a>
+                  ) : e.school}
+                </span>
+                {e.years && <span className="opacity-60"> • {e.years}</span>}
+              </p>
+            ))}
           </div>
         </DcCard>
       </div>
@@ -70,10 +64,8 @@ export default function AboutPanel() {
       {/* Tooling */}
       <div className="span-12" id={ABOUT_ANCHORS.tooling} style={{ scrollMarginTop: "120px" }}>
         <DcCard className="p-4">
-          <h3 className="text-lg font-extrabold">
-            My Tooling &amp; Technologies of Choice
-          </h3>
-        <ul className="mt-2 text-[13px] leading-snug md:columns-2 xl:columns-3 [column-gap:1.25rem]">
+          <h3 className="text-lg font-extrabold">The Tooling &amp; Technologies I am familiar with</h3>
+          <ul className="mt-2 text-[13px] leading-snug md:columns-2 xl:columns-3 [column-gap:1.25rem]">
             {TOOLING.map((g) => (
               <ToolGroup key={g.title} title={g.title} items={g.items} />
             ))}
@@ -87,8 +79,28 @@ export default function AboutPanel() {
           <h3 className="text-lg font-extrabold">My Recent Experience Highlights</h3>
           <ul className="mt-2 list-disc pl-5 leading-relaxed text-sm">
             {EXPERIENCE_POINTS.map((line, i) => (
-              <li key={i} className="opacity-90">
-                {line}
+              <li key={i} className="opacity-90">{line}</li>
+            ))}
+          </ul>
+        </DcCard>
+      </div>
+
+      {/* Fun Links */}
+      <div className="span-12" id={ABOUT_ANCHORS.links} style={{ scrollMarginTop: "120px" }}>
+        <DcCard className="p-4">
+          <h3 className="text-lg font-extrabold">Links I find amusing</h3>
+          <ul className="mt-2 text-[13px] leading-snug space-y-1 md:columns-2 [column-gap:1.25rem]">
+            {FUN_LINKS.map((l) => (
+              <li key={l.href} className="break-inside-avoid mb-1">
+                <a
+                  className="underline decoration-dotted underline-offset-2 hover:decoration-solid"
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {l.title}
+                </a>
+                <span className="opacity-80"> · {l.blurb}</span>
               </li>
             ))}
           </ul>

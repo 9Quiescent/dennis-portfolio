@@ -1,0 +1,131 @@
+# Page snapshot
+
+```yaml
+- main [ref=e3]:
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - generic [ref=e11]:
+        - img "Dennis Kalongonda" [ref=e12]
+        - img
+        - img
+      - generic [ref=e13]:
+        - heading "Dennis Kalongonda" [level=1] [ref=e14]
+        - generic [ref=e15]: Software Engineer · AI/ML · DevSecOps · Cloud · FullStack (.NET) · Security · Support
+    - generic [ref=e16]:
+      - button "About" [ref=e17]:
+        - generic [ref=e18]: About
+      - button "Projects" [ref=e19]:
+        - generic [ref=e20]: Projects
+      - generic [ref=e21]:
+        - generic [ref=e23]:
+          - generic [ref=e25]:
+            - generic [ref=e26]: The Trusty Bubbleman
+            - generic [ref=e27]: Type what you want; I’ll jump there.
+          - generic [ref=e28]:
+            - textbox "Ask or command… e.g. 'show education', 'projects', 'linkedin'" [active] [ref=e29]: who is dennis?
+            - button "Send" [ref=e30]
+          - generic [ref=e31]:
+            - generic [ref=e32]: Dennis is a Software Engineer who loves video games, corgis, and free time by the beach.
+            - generic [ref=e33]:
+              - button "Software Engineer" [ref=e34]
+              - button "Video Games" [ref=e35]
+              - button "Corgis" [ref=e36]
+              - button "Beach" [ref=e37]
+        - button "Open Nav Buddy" [expanded] [ref=e38]
+      - link "Open LinkedIn profile" [ref=e39] [cursor=pointer]:
+        - /url: https://www.linkedin.com/in/dennis-kalongonda-083651193/
+  - generic [ref=e42]:
+    - generic [ref=e44]:
+      - heading "A bit about me (& This Portfolio)" [level=2] [ref=e45]
+      - paragraph [ref=e46]: I love being a developer, and I love playing on video games. Some of my favourites include Scribblenauts on the Nintendo DS, Ocarina of Time on the Nintendo 64, Ratchet & Clank 1 for the Playstation 2, Sonic Unleashed for the Playstation 3 and just about every single Halo game over on Xbox systems. Some Metroid on the GameCube/Wii is usually a fantastic time as well.) I absolutely adore free days outdoors by Henley, and aspire to become a Corgi or Shiba Inu dad in the hopefully near future. One of these days, I'll also be good at playing the guitar, so keep your ears open for that! :) As for the here and now, I've built this portfolio for you guys (recruitment staff I assume to be able find anything you'd possibly need to know about me as a prospective employee. For starters, if you ever get lost in all of this blue, you're always welcome to tap on the trusty bubble man in the blue box. He's been designed to be pretty useful for navigation, or answering questions if you would prefer to interact with my portfolio in that sort of fashion. If that's not your thing, and you'd prefer something more deterministic, this site is also designed to be interacted with manually. You'll be able to find Github repository links by pressing the green 'Projects' button for in the navigation bar in the section above for example. You are currently on the 'About' page, and are hopefully absorbing everything you've read thus far. But that's enough of me, I'll leave you to your duties now :D
+    - generic [ref=e48]:
+      - img "University of South Australia" [ref=e49]
+      - generic [ref=e50]:
+        - heading "Education" [level=3] [ref=e51]
+        - paragraph [ref=e52]:
+          - generic [ref=e53]: Bachelor of Information Technology (Software Development)
+          - generic [ref=e54]:
+            - text: at
+            - link "University of South Australia (UniSA)" [ref=e55] [cursor=pointer]:
+              - /url: https://www.unisa.edu.au/
+          - generic [ref=e56]: • 2023–2025
+    - generic [ref=e58]:
+      - heading "The Tooling & Technologies I am familiar with" [level=3] [ref=e59]
+      - list [ref=e60]:
+        - listitem [ref=e61]:
+          - generic [ref=e62]: "Languages:"
+          - generic [ref=e63]: C#, Python, Java, TypeScript/JavaScript, SQL, C++, Bash, PowerShell
+        - listitem [ref=e64]:
+          - generic [ref=e65]: "Frameworks:"
+          - generic [ref=e66]: ASP.NET Core MVC, Razor, Entity Framework, Web API (REST), React, xUnit, Tailwind CSS, Vite
+        - listitem [ref=e67]:
+          - generic [ref=e68]: "Cloud, Orchestration & Infra:"
+          - generic [ref=e69]: AWS, Azure, Docker, Kubernetes (AKS), Terraform, Linux
+        - listitem [ref=e70]:
+          - generic [ref=e71]: "Virtualisation & Lab:"
+          - generic [ref=e72]: VMware Workstation/ESXi, VirtualBox, UTM (Apple Silicon), WSL2, Docker Desktop, Ubuntu
+        - listitem [ref=e73]:
+          - generic [ref=e74]: "DevOps:"
+          - generic [ref=e75]: GitHub Actions, Azure DevOps Pipelines, CI/CD, Release Notes, Rollback Plans, SemVer, Docker Compose, Cloudflare Pages/Workers
+        - listitem [ref=e76]:
+          - generic [ref=e77]: "Networking & Security:"
+          - generic [ref=e78]: OWASP ASVS, OWASP Top 10, AuthN/AuthZ, Nmap, Wireshark/PCAP, Metasploit (lab), Threat-modeling
+        - listitem [ref=e79]:
+          - generic [ref=e80]: "Data:"
+          - generic [ref=e81]: ETL, XQuery/BaseX, XML/JSON, Oracle XE, Data Modeling, Joins/Indexes
+        - listitem [ref=e82]:
+          - generic [ref=e83]: "Observability & QA:"
+          - generic [ref=e84]: Health checks, SLIs/SLOs, Structured logging, Integration tests
+        - listitem [ref=e85]:
+          - generic [ref=e86]: "Project & Docs:"
+          - generic [ref=e87]: Jira, Confluence, ADRs, Markdown
+        - listitem [ref=e88]:
+          - generic [ref=e89]: "AI/ML:"
+          - generic [ref=e90]: Python (pandas, numpy, Jupyter, Pytorch), scikit-learn, matplotlib, Hugging Face Transformers, RAG (LangChain/LangGraph), Embeddings & vector DBs (pgvector/Pinecone), Evaluation (Ragas), FastAPI for model APIs
+    - generic [ref=e92]:
+      - heading "My Recent Experience Highlights" [level=3] [ref=e93]
+      - list [ref=e94]:
+        - listitem [ref=e95]: Lead Developer, Scrum Master, and Product Owner for a government partner (FSSA) R&D proposal management system. Shipped MVP to production and iterated in sprints.
+        - listitem [ref=e96]: "Owned architecture end-to-end: normalized SQL schema & migrations, C# REST APIs (ASP.NET Core Web API), Razor/Bootstrap UI, and Azure infrastructure provisioned with Terraform."
+        - listitem [ref=e97]: "Process & delivery: ran sprint ceremonies, backlog grooming, and release planning; wrote epics/user stories/acceptance criteria; managed change control, release notes, and stakeholder demos in Jira/Confluence."
+        - listitem [ref=e98]: "Quality & reliability: CI/CD via GitHub Actions/Azure DevOps with xUnit integration tests, schema checks, and static-analysis gates; one line deploys with documented rollback plans."
+        - listitem [ref=e99]: "Security by default: AuthN/AuthZ with role-based access, input validation, and OWASP ASVS-aligned practices; least-privilege identities and secrets management."
+        - listitem [ref=e100]: "Performance & DX: tuned EF Core queries and indexes, server-side pagination, and caching on read paths; structured logging and health checks kept the app responsive under realistic data volumes."
+        - listitem [ref=e101]: "Operational excellence: SLIs/SLOs, dashboards, and on-call-friendly docs; install/upgrade guides and onboarding scripts (Bash/PowerShell) for smooth handoffs."
+        - listitem [ref=e102]: "Collaboration & impact: partnered with research and IT to turn ambiguous requirements into shippable increments; delivered a maintainable codebase for final handoff."
+    - generic [ref=e104]:
+      - heading "Links I find amusing" [level=3] [ref=e105]
+      - list [ref=e106]:
+        - listitem [ref=e107]:
+          - link "Choose Boring Technology (Dan McKinley)" [ref=e108] [cursor=pointer]:
+            - /url: https://mcfunley.com/choose-boring-technology
+          - generic [ref=e109]: · Winning by picking tools you can actually operate on-call.
+        - listitem [ref=e110]:
+          - 'link "The Log: Unifying Abstraction (Jay Kreps)" [ref=e111] [cursor=pointer]':
+            - /url: https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
+          - generic [ref=e112]: · Why logs simplify data pipelines, stream processing, and CDC.
+        - listitem [ref=e113]:
+          - link "Simple Made Easy (Rich Hickey) - talk" [ref=e114] [cursor=pointer]:
+            - /url: https://youtu.be/SxdOUGdseq4
+          - generic [ref=e115]: · ‘Easy’ isn’t ‘simple’. Designing for essential complexity.
+        - listitem [ref=e116]:
+          - link "How Complex Systems Fail (Richard Cook)" [ref=e117] [cursor=pointer]:
+            - /url: https://how.complexsystems.fail/
+          - generic [ref=e118]: · Short field notes every SRE/engineer should carry around.
+        - listitem [ref=e119]:
+          - link "Data Looks Better Naked (Darkhorse Analytics)" [ref=e120] [cursor=pointer]:
+            - /url: https://www.darkhorseanalytics.com/blog/data-looks-better-naked
+          - generic [ref=e121]: · Remove-to-improve basics for readable charts.
+        - listitem [ref=e122]:
+          - link "Write Code That’s Easy to Delete" [ref=e123] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=8bZh5LMaSmE
+          - generic [ref=e124]: "· Great 10-minute principle: deletion-friendly code ages best."
+        - listitem [ref=e125]:
+          - link "The Law of Leaky Abstractions (Joel Spolsky)" [ref=e126] [cursor=pointer]:
+            - /url: https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/
+          - generic [ref=e127]: · Abstractions leak, so design ops and UX accordingly.
+        - listitem [ref=e128]:
+          - link "Friends Don't Let Friends Make Bad Graphs" [ref=e129] [cursor=pointer]:
+            - /url: https://github.com/cxli233/FriendsDontLetFriends
+          - generic [ref=e130]: · Why certain types of data visualisations are bad.
+```
