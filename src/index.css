@@ -8,6 +8,10 @@
 
 /* ---------- Base ---------- */
 @layer base {
+  /* Mobile-safe defaults */
+  html { -webkit-text-size-adjust: 100%; }
+  img, video { max-width: 100%; height: auto; display: block; }
+
   /* These are just subtle floating specks */
   body::before{
     content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
@@ -36,9 +40,10 @@
 
 /* ---------- Components ---------- */
 @layer components {
+  /* Solid on mobile; original gradient from sm: up */
   .dc-card{
     @apply rounded-[22px] border border-[var(--edge)]
-           bg-gradient-to-b from-white/90 to-white/70
+           bg-white sm:bg-gradient-to-b sm:from-white/90 sm:to-white/70
            shadow-[0_14px_28px_rgba(25,74,124,.12),inset_0_1px_0_rgba(255,255,255,.92)];
   }
 
@@ -67,14 +72,8 @@
            shadow-[0_8px_18px_rgba(25,74,124,.12),inset_0_1px_0_rgba(255,255,255,.92)];
   }
 
-  .pill{
-    @apply px-2.5 py-1 rounded-full text-[.75rem] font-extrabold whitespace-nowrap
-           bg-gradient-to-b from-white to-[#f3f9ff]
-           border border-black/5 text-[#214b76]
-           shadow-[inset_0_1px_0_rgba(255,255,255,.9),0_8px_16px_rgba(25,74,124,.10)];
-  }
-
-  .grid-chan{ @apply grid grid-cols-12 gap-[18px]; }
+  /* Tighter mobile spacing; original gap restored from sm: up */
+  .grid-chan{ @apply grid grid-cols-12 gap-3 sm:gap-[18px]; }
   .span-12{ grid-column: span 12 / span 12; }
   .span-4{ grid-column: span 4 / span 4; }
   @media (max-width:1024px){ .span-4{ grid-column: span 6 / span 6; } }
@@ -82,30 +81,31 @@
 
   .avatar-wrap{ @apply relative overflow-visible rounded-[22px]; }
 
-/* remove baseline gaps so positioning is exact */
-.avatar-wrap > img{ display:block; }
+  /* remove baseline gaps so positioning is exact */
+  .avatar-wrap > img{ display:block; }
 
-.tape{
-  @apply absolute pointer-events-none opacity-95;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,.15));
-  z-index: 10;
-}
+  .tape{
+    @apply absolute pointer-events-none opacity-95;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,.15));
+    z-index: 10;
+  }
 
-/* top-right tape */
-.tape.tr{
-  top: 0; right: 0;
-  width: 58%;
-  transform: translate(28%,-46%) rotate(10deg);
-  transform-origin: center;
-}
+  /* top-right tape */
+  .tape.tr{
+    top: 0; right: 0;
+    width: 58%;
+    transform: translate(28%,-46%) rotate(10deg);
+    transform-origin: center;
+  }
 
-/* bottom-left tape */
-.tape.bl{
-  bottom: 0; left: 0;
-  width: 58%;
-  transform: translate(-18%,38%) rotate(-180deg);
-  transform-origin: center;
-}
+  /* bottom-left tape */
+  .tape.bl{
+    bottom: 0; left: 0;
+    width: 58%;
+    transform: translate(-18%,38%) rotate(-180deg);
+    transform-origin: center;
+  }
+
   .ai-flash{ @apply relative; }
   .ai-flash::after{
     content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;

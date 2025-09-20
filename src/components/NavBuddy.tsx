@@ -12,7 +12,6 @@ import {
 
 export type Variant = "inline" | "fab";
 type Props = { onGo: (t: TabKey) => void; variant?: Variant; linkedinUrl?: string };
-
 const WORKER_ENDPOINT: string | undefined =
   (import.meta as any).env?.VITE_NAVBUDDY_ENDPOINT ??
   (globalThis as any).__NAVBUDDY_ENDPOINT;
@@ -46,7 +45,9 @@ function isNavIntent(q: string): boolean {
   return false;
 }
 
-function isNavChip(c: string) { return /\b(about|projects|education|linkedin)\b/.test(c.toLowerCase()); }
+function isNavChip(c: string) {
+  return /\b(about|projects|education|linkedin)\b/.test(c.toLowerCase());
+}
 
 type WorkerReply = { say?: string; chips?: string[]; error?: string };
 
@@ -66,7 +67,6 @@ function buildFactsBlob() {
     (e) => `${e.degree}${e.school ? ` at ${e.school}` : ""}${e.years ? ` (${e.years})` : ""}`
   ).join(" • ");
 
-  // Canonical, machine-readable projects
   const projectsJson = JSON.stringify(
     PROJECTS.map((p) => ({
       title: p.title,
@@ -78,7 +78,6 @@ function buildFactsBlob() {
 
   const toolingJson = JSON.stringify(TOOLING);
 
-  // Human-readable backup
   const projectsLines = PROJECTS.map((p) => {
     const badges = p.badges?.length ? ` [${p.badges.join(", ")}]` : "";
     return `• ${p.title} — ${p.blurb}${badges}`;
@@ -97,7 +96,6 @@ function buildFactsBlob() {
   ].join("\n");
 }
 
-
 export default function NavBuddy({ onGo, variant = "inline", linkedinUrl }: Props) {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -109,6 +107,7 @@ export default function NavBuddy({ onGo, variant = "inline", linkedinUrl }: Prop
   const panelRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const replyEpoch = useRef(0);
+
   useEffect(() => {
     if (!open) return;
     const onDown = (e: MouseEvent) => {
@@ -117,6 +116,13 @@ export default function NavBuddy({ onGo, variant = "inline", linkedinUrl }: Prop
     };
     document.addEventListener("mousedown", onDown);
     return () => document.removeEventListener("mousedown", onDown);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closePanel(); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
   function closePanel() {
@@ -164,86 +170,121 @@ export default function NavBuddy({ onGo, variant = "inline", linkedinUrl }: Prop
     }
   }
 
+  // Panel: fixed height on mobile; internal content scrolls.
   const Panel = (
-    <div className="p-4 rounded-[14px] border border-[var(--edge)] shadow-lg bg-white max-h-[60vh] overflow-y-auto">
+    <div
+      className="p-4 sm:p-4 rounded-[14px] border border-[var(--edge)] shadow-lg bg-white
+                 h-[400px] md:h-auto flex flex-col
+                 max-h-[min(70dvh,520px)] md:max-h-[min(70vh,520px)] overflow-hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="navbuddy-title"
+      aria-live="polite"
+    >
       <div className="flex items-center gap-3">
         <img src={navBuddyPng} alt="" width={36} height={36} className="rounded-md" />
         <div className="text-sm">
-          <div className="font-extrabold">The Trusty Bubbleman</div>
-          <div className="opacity-80">Type what you want; I’ll jump there.</div>
+          <div id="navbuddy-title" className="font-extrabold">The Trusty Bubbleman</div>
+          <div className="opacity-80">Describe where or what you want; I’ll help get you there.</div>
         </div>
       </div>
 
-      <div className="mt-3 flex gap-2">
+      {/* input row */}
+      <div className="mt-3 grid grid-cols-[1fr,auto] gap-2">
         <input
           ref={inputRef}
-          className="dc-input"
-          placeholder="Ask or command… e.g. 'show education', 'projects', 'linkedin'"
+          className="dc-input min-w-0"
+          placeholder="E.g 'Show me his C++ stuff'"
           value={q}
           onChange={(e) => setQ(e.target.value)}
           onKeyDown={(e) => { if (e.key === "Enter") handleSend(); if (e.key === "Escape") closePanel(); }}
         />
-        <button className="dc-btn tone-blue font-extrabold" onClick={() => handleSend()} disabled={busy}>
+        <button
+          className="dc-btn tone-blue font-extrabold shrink-0 min-w-[84px]"
+          onClick={() => handleSend()}
+          disabled={busy}
+        >
           {busy ? "…" : "Send"}
         </button>
       </div>
 
-      {(say || err || chips.length > 0) && (
-        <div className="mt-3 space-y-2">
-          {say && (
-            <div
-              data-testid="navbuddy-say"
-              className="text-sm leading-snug whitespace-pre-wrap break-words"
-            >
-              {say}
-            </div>
-          )}
-          {err && <div className="text-sm text-red-600">Error: {err}</div>}
-          {!!chips.length && (
-            <div className="flex flex-wrap gap-2">
-              {chips.map((c) => (
-                <button
-                  key={c}
-                  className="dc-btn tone-blue"
-                  onClick={() => {
-                    if (isNavChip(c)) {
-                      const t = resolveTarget(c);
-                      onGo(t.tab);
-                      if (t.id) setTimeout(() => scrollToIdWhenReady(t.id!), 0);
-                    } else {
-                      handleSend(c);
-                    }
-                  }}
-                  title={c}
-                >
-                  {c}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+      {/* scrollable reply area */}
+      <div className="mt-3 flex-1 overflow-y-auto overscroll-contain pr-1 [scrollbar-gutter:stable]">
+        {say && (
+          <div
+            data-testid="navbuddy-say"
+            className="text-sm leading-snug whitespace-pre-wrap break-words"
+          >
+            {say}
+          </div>
+        )}
+        {err && <div className="text-sm text-red-600 mt-2">Error: {err}</div>}
+        {!!chips.length && (
+          <div className="mt-2 flex flex-wrap gap-2">
+            {chips.map((c) => (
+              <button
+                key={c}
+                className="dc-btn tone-blue smol break-words"
+                onClick={() => {
+                  if (isNavChip(c)) {
+                    const t = resolveTarget(c);
+                    onGo(t.tab);
+                    if (t.id) setTimeout(() => scrollToIdWhenReady(t.id!), 0);
+                  } else {
+                    handleSend(c);
+                  }
+                }}
+                title={c}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
+  );
+
+  // Mobile overlay: transparent (no blur)
+  const MobileOverlay = (
+    <div
+      className="fixed inset-0 z-[70] md:hidden bg-transparent"
+      onClick={closePanel}
+      aria-hidden="true"
+    />
   );
 
   if (variant === "inline") {
     return (
       <div className="relative">
         {open && (
-          <div
-            ref={panelRef}
-            className={`absolute right-0 top-[calc(100%+10px)] navbuddy-panel ${closing ? "closing" : ""} z-[80] w-[min(560px,92vw)]`}
-            style={{ overflow: "visible" }}   // hard override to prevent clipping
-          >
-            {Panel}
-          </div>
+          <>
+            {MobileOverlay}
+            <div
+              ref={panelRef}
+              className={`navbuddy-panel ${closing ? "closing" : ""} z-[80]
+                          fixed bottom-[calc(-100px+env(safe-area-inset-bottom,0px))] left-1/2 -translate-x-1/2
+                          w-[min(560px,calc(100vw-24px))]
+                          md:absolute md:inset-auto md:right-0 md:top-[calc(100%+10px)]
+                          md:w-[560px] md:translate-x-0`}
+              style={{ overflow: "visible" }}
+            >
+              {Panel}
+            </div>
+          </>
         )}
         <button
           className="dc-btn tone-blue icon-btn"
           aria-label="Open Nav Buddy"
           aria-expanded={open}
-
-          onClick={() => { if (open) closePanel(); else { setOpen(true); setTimeout(() => inputRef.current?.focus(), 0); } }}
+          onClick={() => {
+            if (open) {
+              closePanel();
+            } else {
+              setOpen(true);
+              setTimeout(() => inputRef.current?.focus(), 0);
+            }
+          }}
           title="Nav Buddy"
         >
           <img className="buddy-img" src={navBuddyPng} alt="" />
@@ -251,16 +292,26 @@ export default function NavBuddy({ onGo, variant = "inline", linkedinUrl }: Prop
       </div>
     );
   }
+
+  // FAB variant
   return (
-    <div className="fixed bottom-5 right-5 z-50">
+    <div
+      className="fixed right-4 z-50"
+      style={{ bottom: "calc(20px + env(safe-area-inset-bottom, 0px))" }}
+    >
       {open && (
-        <div
-          ref={panelRef}
-          className={`mb-3 navbuddy-panel ${closing ? "closing" : ""} z-[80] w-[min(560px,92vw)]`}
-          style={{ overflow: "visible" }}   // hard override to prevent clipping
-        >
-          {Panel}
-        </div>
+        <>
+          {MobileOverlay}
+          <div
+            ref={panelRef}
+            className={`navbuddy-panel ${closing ? "closing" : ""} z-[80]
+                        fixed bottom-[calc(86px+env(safe-area-inset-bottom,0px))] left-1/2 -translate-x-1/2
+                        w-[min(560px,calc(100vw-24px))]`}
+            style={{ overflow: "visible" }}
+          >
+            {Panel}
+          </div>
+        </>
       )}
       <button
         className="dc-btn tone-blue icon-btn"
