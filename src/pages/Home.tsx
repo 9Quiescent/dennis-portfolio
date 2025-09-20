@@ -6,7 +6,6 @@ import { projects as PROJECTS } from "../data/projects";
 
 export type TabKey = "about" | "projects";
 
-// Accept optional props (backwards-compat with old App that passed contactEmail)
 export default function Home(_props?: { contactEmail?: string }) {
   const [tab, setTab] = useState<TabKey>("about");
 
@@ -35,14 +34,14 @@ export default function Home(_props?: { contactEmail?: string }) {
 
   return (
     <main className="min-h-screen text-ink bg-hero-sky">
-      <header className="px-6 pt-8 sm:px-10">
+      <header className="px-5 sm:px-10 pt-6 sm:pt-8">
         <div className="max-w-7xl mx-auto">
           <Hero active={tab} onGo={setTab} />
         </div>
       </header>
 
-      <section className="px-6 sm:px-10 mt-6 pb-16">
-        <div className="max-w-7xl mx-auto grid gap-6">
+      <section className="px-5 sm:px-10 mt-5 sm:mt-6 pb-16">
+        <div className="max-w-7xl mx-auto grid gap-5 sm:gap-6">
           {tab === "about" ? <AboutPanel /> : <ProjectsPanel projects={PROJECTS} />}
         </div>
       </section>

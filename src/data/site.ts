@@ -51,8 +51,11 @@ export const EDUCATION: Education[] = [
   },
 ];
 
-export const ABOUT_SUMMARY =
-  "I love being a developer, and I love playing on video games. Some of my favourites include Scribblenauts on the Nintendo DS, Ocarina of Time on the Nintendo 64, Ratchet & Clank 1 for the Playstation 2, Sonic Unleashed for the Playstation 3 and just about every single Halo game over on Xbox systems. Some Metroid on the GameCube/Wii is usually a fantastic time as well. I absolutely adore free days outdoors by Henley (or most beaches for that matter), and aspire to become a Corgi or Shiba Inu dad in the hopefully near future. One of these days, I'll also be good at playing the guitar, so keep your ears open for that! :) As for the here and now, I've built this portfolio for you guys (recruitment staff I assume to be able find anything you'd possibly need to know about me as a prospective employee. For starters, if you ever get lost in all of this blue, you're always welcome to tap on the trusty bubble man in the blue box. He's been designed to be pretty useful for navigation, or answering questions if you would prefer to interact with my portfolio in that sort of fashion. If that's not your thing, and you'd prefer something more deterministic, this site is also designed to be interacted with manually. You'll be able to find Github repository links by pressing the green 'Projects' button for in the navigation bar in the section above for example. You are currently on the 'About' page, and are hopefully absorbing everything you've read thus far. But that's enough of me, I'll leave you to your duties now :D";
+export const ABOUT_SUMMARY = `I love being a developer, and I love playing video games. Very big on mascot platformers like Mario, Sonic, Banjo Kazooie, Zelda, Donkey Kong and Metroid to name a few. I absolutely adore free days outdoors by Henley (or most beaches for that matter), and aspire to become a Corgi or Shiba Inu dad in the hopefully near future. One of these days, I'll also be good at playing the guitar, so keep your ears open for that! :)
+
+Anyhow, I've built this portfolio for you guys (recruitment staff I assume) to be able find anything you'd possibly need to know about me as a prospective employee. 
+
+If you're ever lost, you're always welcome to tap on the trusty bubble man in the blue box. He's been designed to be quite useful for navigation, and answering questions based on the content of this site. Naturally, if that's not your thing, this site is also designed to be an intuitive manual experience :D`;
 
 export const TOOLING: Array<{ title: string; items: string[] }> = [
   { title: "Languages", items: ["C#", "Python", "Java", "TypeScript/JavaScript", "SQL", "C++", "Bash", "PowerShell"] },
@@ -113,10 +116,10 @@ export const PROJECTS: Project[] = [
   {
     title: "Dennis' Portfolio",
     blurb:
-      "The site you’re using. Vite + React + TypeScript with Tailwind, teeny bit of JavaScript. Navigation assistant (Large Language Model for user feedback, UI for nav) for local Q&A and section navigation, plus Playwright E2E and Vitest component tests. Deployed with a Github Actions and CloudFlare CI/CD.",
+      "The site you’re using. Vite + React + TypeScript with Tailwind, teeny bit of JavaScript. Navigation assistant for local Q&A (Large Language Model) and section navigation (UI), plus Playwright E2E and Vitest component tests. Deployed with a Github Actions and CloudFlare CI/CD.",
     badges: [
       "Vite","React","TypeScript", "JavaScript","Tailwind CSS","Playwright","Vitest",
-      "GitHub Actions","Cloudflare Pages/Workers", "Cloud","Accessibility", "LLM/Large Language Model", "AI/Artifical Intelligence", "ML/Machine Learning", "NLP", "Transformers", "AI/ML"
+      "GitHub Actions", "CI/CD","Cloudflare Pages/Workers", "Cloud","Accessibility", "LLM/Large Language Model", "AI/Artifical Intelligence", "ML/Machine Learning", "NLP", "Transformers", "AI/ML"
     ],
     links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/dennis-portfolio" }],
   },
@@ -153,11 +156,20 @@ export const PROJECTS: Project[] = [
     title: "MANET Visualiser",
     blurb:
       "Educational visualiser/simulator for mobile ad hoc network rules and behaviour. Tkinter GUI with clean OOP and Dockerised dev for reproducible runs.",
-    badges: ["Python3","OOP","Tkinter","Simulation","Instrumentation","Docker"],
+    badges: ["Python3","OOP/Object Orientated Programming","Tkinter","Simulation","Instrumentation","Docker"],
     links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/manet-sim" }],
   },
 
-  // 5) NASA DW
+  // 5) Deadman’s Draw (C++)
+  {
+    title: "Deadman’s Draw in C++",
+    blurb:
+      "C++ implementation of DMD with RAII/smart pointers and deterministic destruction. Focus on ownership, memory management profiling, and clean design; an academic sample assessed with automated unit tests (HD).",
+    badges: ["C++","Memory Management","Design Patterns", "OOP/Object Orientated Programming", "RAII","Smart Pointers","Profiling","Game Logic", "TDD/Test Driven Development", "Heap Objects", "Stack Objects", "Code Performance"],
+    links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/Kaldt001_COMP_3023_A1" }],
+  },
+
+  // 6) NASA DW
   {
     title: "NASA Software Release Data Warehouse",
     blurb:
@@ -170,21 +182,13 @@ export const PROJECTS: Project[] = [
     links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/json-xml-relational-pipeline" }],
   },
 
-  // 6) Deadman’s Draw (C++)
-  {
-    title: "Deadman’s Draw in C++",
-    blurb:
-      "C++ implementation of DMD with RAII/smart pointers and deterministic destruction. Focus on ownership, memory management profiling, and clean design; an academic sample assessed with automated unit tests (HD).",
-    badges: ["C++","Memory Management","Design Patterns","RAII","Smart Pointers","Profiling","Game Logic", "TDD/Test Driven Development"],
-    links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/Kaldt001_COMP_3023_A1" }],
-  },
 
   // 7) Java Farm Simulator (toy)
   {
     title: "Java Farm Simulator",
     blurb:
       "Small simulation of fields, crops, and livestock with tick-based progression. Focus on domain modelling, collections, and clear object lifecycles. Assessed using automated unit tests, awarded an HD.",
-    badges: ["Java","OOP","Collections","Simulation Loop","JUnit","Maven/Gradle","CLI", "TDD/Test Driven Development"],
+    badges: ["Java","OOP/Object Orientated Programming","Data Structures", "Collections","Simulation Loop","JUnit","Maven/Gradle","CLI", "TDD/Test Driven Development", "Game Logic"],
     links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/A1.3-git-fix" }],
   },
 ];

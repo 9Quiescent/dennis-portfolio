@@ -13,9 +13,11 @@ export default function MyProjects({
   return (
     <div className="grid-chan" data-animate>
       <div className="span-12" data-ai-id="projects-top">
-        <DcCard className="p-5">
-          <h2 className="text-2xl font-extrabold">Some Stuff I've Built...</h2>
-          <p className="mt-1 text-sm opacity-90">(And a video demo or two in glorious Zoom screen capture quality!)</p>
+        <DcCard className="p-4 sm:p-5">
+          <h2 className="text-xl sm:text-2xl font-extrabold">Some Stuff I've Built...</h2>
+          <p className="mt-1 text-[13px] sm:text-sm opacity-90">
+            (And a video demo or two in glorious Zoom screen capture quality!)
+          </p>
         </DcCard>
       </div>
 
