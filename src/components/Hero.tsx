@@ -82,13 +82,12 @@ export default function Hero({
           <div className="flex items-center gap-6" id="content">
             <Avatar name="Dennis Kalongonda" size={200} />
             <div>
-              <h1 className="text-3xl font-bold tracking-tight">
-                Dennis Kalongonda
-              </h1>
-              <div className="text-sm opacity-80">
-                Software Engineer · AI/ML · DevSecOps · Cloud · SRE · FullStack
-                (.NET) · Security · Support
-              </div>
+             <h1 data-nav="name" className="text-3xl font-bold tracking-tight">
+            Dennis Kalongonda
+            </h1>
+            <div data-nav="tagline" className="text-sm opacity-80">
+            Software Engineer · AI/ML · DevSecOps · Cloud · FullStack (.NET) · Security · Support
+            </div>
             </div>
           </div>
 

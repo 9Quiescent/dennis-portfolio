@@ -21,3 +21,8 @@ build/
 Thumbs.db
 .vscode/*
 !.vscode/extensions.json
+
+# Playwright artifacts
+playwright-report/
+test-results/
+*.zip
