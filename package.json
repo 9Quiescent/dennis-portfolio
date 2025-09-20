@@ -26,10 +26,11 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest --run",
-    "test:unit": "vitest --run",
+
+    "test": "vitest run",
+    "test:unit": "vitest run",
     "test:watch": "vitest",
-    "test:ci": "vitest --run --reporter=basic",
+    "test:ci": "vitest run --reporter=dot",
     "test:ui": "vitest",
     "test:cov": "vitest run --coverage",
 
