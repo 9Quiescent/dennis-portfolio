@@ -12,6 +12,7 @@ import {
 
 export type Variant = "inline" | "fab";
 type Props = { onGo: (t: TabKey) => void; variant?: Variant; linkedinUrl?: string };
+
 const WORKER_ENDPOINT: string | undefined =
   (import.meta as any).env?.VITE_NAVBUDDY_ENDPOINT ??
   (globalThis as any).__NAVBUDDY_ENDPOINT;

@@ -55,6 +55,7 @@ export const ABOUT_SUMMARY = `I love being a developer, and I love playing video
 
 Anyhow, I've built this portfolio for you guys (recruitment staff I assume) to be able find anything you'd possibly need to know about me as a prospective employee. 
 
+
 If you're ever lost, you're always welcome to tap on the trusty bubble man in the blue box. He's been designed to be quite useful for navigation, and answering questions based on the content of this site. Naturally, if that's not your thing, this site is also designed to be an intuitive manual experience :D`;
 
 export const TOOLING: Array<{ title: string; items: string[] }> = [
