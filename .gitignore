@@ -4,7 +4,6 @@ node_modules/
 .pnpm-debug.log*
 
 # builds / caches
-dist/
 build/
 .vite/
 .tsbuild/

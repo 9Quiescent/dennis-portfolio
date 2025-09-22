@@ -53,6 +53,7 @@ export const EDUCATION: Education[] = [
 
 export const ABOUT_SUMMARY = `I love being a developer, and I love playing video games. Very big on mascot platformers like Mario, Sonic, Banjo Kazooie, Zelda, Donkey Kong and Metroid to name a few. I absolutely adore free days outdoors by Henley (or most beaches for that matter), and aspire to become a Corgi or Shiba Inu dad in the hopefully near future. One of these days, I'll also be good at playing the guitar, so keep your ears open for that! :)
 
+
 Anyhow, I've built this portfolio for you guys (recruitment staff I assume) to be able find anything you'd possibly need to know about me as a prospective employee. 
 
 
