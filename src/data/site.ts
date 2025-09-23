@@ -184,6 +184,8 @@ export const PROJECTS: Project[] = [
     links: [{ label: "View Public Repo", href: "https://github.com/9Quiescent/json-xml-relational-pipeline" }],
   },
 
+
+
   // 7) Java Farm Simulator (toy)
   {
     title: "Java Farm Simulator",
